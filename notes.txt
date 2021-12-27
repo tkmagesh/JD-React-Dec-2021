@@ -48,3 +48,13 @@ Problem Statement:
             a. No validation are needed
         2. preparing the application for deployment is taken care by another team
             a. another team will take care of moving the javascript code into a separate JS file, styles to separate CSS file and images to separate folder
+
+Reactive X Proactive
+    (Dumb)    (knowledge)
+
+View Sync Strategy
+    1. Incremental
+        Update the individual DOM nodes based on the state changes
+
+    2. All In One approach
+        Recreate the whole DOM fragment (with the lateset model data) for EVERY state change 
