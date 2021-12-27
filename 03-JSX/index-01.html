@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React VDOM</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        .header1{
+            color : blue;
+        }
+    </style>
+
+    <script type="text/babel">
+        var counter = 0;
+        function onBtnRenderClick(){
+            ++counter;
+
+            //JSX
+            var appEle = (
+                <div>
+                    <h1 className="header1">React.js</h1>
+                    <hr/>
+                    <div>
+                        <span>Counter :</span>
+                        <span>{counter}</span>
+                    </div>
+                    <div>
+                        <h3>Introduction</h3>
+                        <p>Velit aliqua enim duis sunt culpa. Mollit culpa magna cillum deserunt dolore ipsum nulla. Laboris aliqua voluptate do minim veniam sit minim. Aliquip fugiat aliqua do amet anim. Ex qui ut deserunt fugiat qui incididunt voluptate irure qui ea consectetur deserunt. Qui eiusmod ut ad sunt ea magna qui ullamco. Enim occaecat commodo occaecat fugiat do labore proident laborum velit ex.Consequat irure laboris exercitation minim enim esse velit dolor ullamco occaecat. Anim sint nulla qui eu id mollit laboris ut nostrud. Reprehenderit et ea ad dolor est ut. Cillum duis aliquip eiusmod Lorem nulla sunt ea voluptate nulla et. Exercitation adipisicing nostrud labore laboris non deserunt dolor nostrud esse cillum occaecat.</p>
+                        <p>Duis reprehenderit proident do commodo quis adipisicing laborum quis culpa officia minim. Proident aute aliqua tempor deserunt voluptate in voluptate. Sunt non veniam pariatur qui amet eiusmod labore nulla officia non enim dolor nostrud velit. Deserunt ipsum sunt dolor occaecat quis minim eiusmod reprehenderit ipsum ullamco voluptate id quis ullamco. Labore aliquip excepteur officia id velit mollit deserunt anim velit esse. Tempor adipisicing incididunt laborum qui irure aliquip exercitation elit tempor ullamco laborum.Consectetur laboris velit cupidatat exercitation amet id cupidatat proident excepteur. Incididunt laboris reprehenderit veniam aliqua irure amet irure eiusmod ullamco do sit dolore cillum. Excepteur id adipisicing laboris adipisicing nisi duis pariatur eu do qui aute aute. Proident do Lorem consequat consequat enim velit. Nostrud qui culpa eiusmod laboris sit quis dolore pariatur incididunt nulla nisi fugiat. Culpa ad deserunt magna sit duis laboris nulla voluptate eu consectetur.</p>
+                        <p>Veniam ullamco pariatur laboris Lorem enim. Minim elit qui elit ea occaecat tempor dolore proident adipisicing tempor nostrud. Velit cupidatat ad enim nisi consectetur laborum aute do nulla. Est id veniam ipsum officia adipisicing sunt incididunt et aliquip.Adipisicing velit veniam amet ipsum nulla minim dolor elit commodo consequat. Mollit dolore amet commodo nulla laborum est ut Lorem pariatur. Culpa occaecat enim anim eiusmod reprehenderit ullamco et culpa. Duis tempor officia incididunt qui nulla sit ipsum eiusmod reprehenderit anim velit eiusmod cupidatat.</p>
+                    </div>
+                    <div>
+                        <h3>Advantages</h3>
+                        <ul>
+                            <li>Declarative</li>
+                            <li>Efficient</li>
+                        </ul>
+                    </div>
+                </div>
+            );
+            ReactDOM.render(appEle, document.getElementById('root'));
+
+           
+        }
+        function onDocumentLoad(){
+            var btnRender = document.getElementById('btnRender');
+            btnRender.addEventListener('click', onBtnRenderClick);
+        }
+        window.addEventListener('load', onDocumentLoad);
+
+    </script>
+</head>
+<body>
+    <button id="btnRender">Render</button>
+    <!-- 
+        <div>
+            <span>Counter :</span>
+            <span id="spanCounter">0</span>
+        </div> 
+    -->
+    <div id="root"></div>
+</body>
+</html>

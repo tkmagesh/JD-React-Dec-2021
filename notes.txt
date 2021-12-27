@@ -58,3 +58,15 @@ View Sync Strategy
 
     2. All In One approach
         Recreate the whole DOM fragment (with the lateset model data) for EVERY state change 
+
+
+HTML Vs JSX
+HTML
+    1. Open tags without close tags are allowed
+    2. 'for' attribute is allowed
+    3. 'class' attribute is allowed
+
+JSX
+    1. Every open tag must have the corresponding close tag
+    2. Use 'htmlFor' in place of 'for' attribute
+    3. Use 'className' in place of 'class' attribute
