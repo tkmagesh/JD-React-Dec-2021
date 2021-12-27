@@ -1,0 +1,18 @@
+
+
+About You
+    Name
+    Total Experience
+    Primary Skillset
+    Experience in React (if any)
+
+Schedule:
+    Commence    : 10:00 Hrs
+    Tea break   : 11:30 Hrs (20 mins)
+    Lunch break : 13:30 Hrs (1 hr)
+    Tea break   : 16:00 Hrs (20 mins)
+    Wind up     : 18:00 Hrs
+
+Methodolgy:
+    - No powerpoints
+    - 100% hands on driven
