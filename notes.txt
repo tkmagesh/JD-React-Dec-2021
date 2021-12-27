@@ -16,3 +16,29 @@ Schedule:
 Methodolgy:
     - No powerpoints
     - 100% hands on driven
+
+Code: 
+    http://github.com/tkmagesh/jd-react-dec-2021
+
+    http://collabedit.com/5xrx8
+
+Requirements:
+    Visual Studio Code
+    Node.js
+    Chrome Browser
+
+What is React?
+    1. Javascript framework for rendering UI components in the browser
+    2. It is a library for rendering UI components
+    3. Used to develop Single Page Applications
+
+    Rich Internet Applications
+        Web Application offering the user experience of a Desktop Application
+        Application runs on the browser handling the following responsibilities
+            1. Decisions based on user interaction      (controller)
+            2. Generate HTML to be shown to the user    (view)
+            3. Manage application state                 (model)
+
+Problem Statement:
+    Salary Calculator - Helps the user in calculating his/her salary
+        salary = basic + hra + da - tax
