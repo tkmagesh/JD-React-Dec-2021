@@ -42,3 +42,9 @@ What is React?
 Problem Statement:
     Salary Calculator - Helps the user in calculating his/her salary
         salary = basic + hra + da - tax
+
+    Assumptions
+        1. The application meets 100% of the function requirements
+            a. No validation are needed
+        2. preparing the application for deployment is taken care by another team
+            a. another team will take care of moving the javascript code into a separate JS file, styles to separate CSS file and images to separate folder
