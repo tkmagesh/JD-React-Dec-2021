@@ -70,3 +70,13 @@ JSX
     1. Every open tag must have the corresponding close tag
     2. Use 'htmlFor' in place of 'for' attribute
     3. Use 'className' in place of 'class' attribute
+    
+
+Encapsulate Presentation + State + UI Behavior => Component
+
+Day-01 Assignment
+    Study the following methods of the 'Array' in javascript
+        1. forEach
+        2. filter
+        3. map
+        4. reduce

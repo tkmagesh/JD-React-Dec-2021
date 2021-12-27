@@ -1,0 +1,123 @@
+ES6 - ECMAScript 6 - ES2015 - ESNext
+
+Babel
+    Transpiler
+
+Features
+    1. let
+    2. const
+    3. array destructuring
+        var nos = [3,1,4,2,5]
+        var [x,y] = nos 
+
+    4. rest operator (array)
+        var [x,y, ...z] = nos
+
+    5. spread operator (array)
+        var newNos = [...nos, 10, 20, 30]
+
+    6. object destructuring
+        var emp = {
+            id : 100,
+            name : 'Magesh',
+            salary : 10000,
+            city : 'Bengaluru'
+        }
+        
+        var {id, city} = emp
+        var {id : x, city : y} = emp
+
+    7. rest operator (object)
+        var { id, city, ...z } = emp
+
+    8. spread operator (object)
+        var newEmp = { ...emp, org : 'JD' }
+
+    9. default parameter
+        function add(x = 10,y = 20){
+            return x + y;
+        }
+    
+        add()    
+        add(100)
+        add(undefined, 200)
+        add(100,200)
+
+    10. arrow functions
+        /*
+        //function statement
+        function add(x,y){
+            return x + y;
+        }
+
+        //function expression
+        var add = function(x,y){
+            return x + y;
+        }
+
+        var add = (x,y) => {
+            return x + y;
+        }
+        */
+        var add = (x,y) => x + y;
+
+        add(100,200)
+
+        var isOdd = x => x % 2 !== 0;
+        var isEven = x => x % 2 === 0;
+
+    11. for-of
+        var nos = [3,1,4,2,5]
+        
+        for(var no of nos){
+            console.log(no)
+        }
+
+    12. template literals
+        var x = 10, y = 20
+        
+        var s1 = 'Sum of ' + x + ' and ' + y + ' is ' + (x + y)
+        
+        var s2 = `Sum of ${x} and ${y} is ${x+y}`
+        
+        var s3 = `Sum of
+        ${x} and ${y} 
+        is ${x+y}`
+
+    13. object construction enhancements
+        var id = 200, name = 'Suresh', salary = 20000
+    
+        var emp = { id, name , salary }
+    
+    14. class
+        class Employee{
+            id = 0;
+            name = '';
+            salary = 0;
+
+            constructor(id, name, salary){
+                this.id = id;
+                this.name = name;
+                this.salary = salary;
+            }
+
+            display(){
+                console.log(`id=${this.id}, name=${this.name}, salary=${this.salary}`);
+            }
+        }
+
+        //class inheritance
+        class FulltimeEmployee extends Employee{
+            benefits = '';
+            constructor(id, name, salary, benefits){
+                super(id, name, salary);
+                this.benefits = benefits;
+            }
+        }
+            
+        
+        var fte = new FulltimeEmployee(200, 'Suresh', 20000, 'Health Care!')    
+
+
+For the complete list of features
+    http://es6-features.org
