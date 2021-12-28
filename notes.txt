@@ -100,3 +100,6 @@ Convert the following into a 'Greeter' component
     <input type="text" name="" id=""/>
     <button>Greet</button>
     <div class="highlight">[message]</div>
+
+Expected outcome:
+    Hi [User Name], Have a nice day!
