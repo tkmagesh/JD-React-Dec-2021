@@ -131,3 +131,7 @@ Calculator-2
     <input type="number" name="" id="">
     <button>Calculate</button>
     <div>[Result]</div>
+
+Assignment:
+    Build the salary calculator using React
+
