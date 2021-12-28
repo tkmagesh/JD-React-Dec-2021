@@ -10,20 +10,34 @@
     <script src="babel.min.js"></script>
     <script type="text/babel">
         class Products extends React.Component {
+            state = {
+                productNames : [],
+                newProductName : ''
+            };
+            txtProductNameRef = React.createRef();
+
+            onBtnAddClick = () => {
+                const { productNames, newProductName } = this.state;
+                this.setState({ 
+                    productNames : [...productNames, newProductName],
+                    newProductName : '' 
+                }, () => {
+                    this.txtProductNameRef.current.focus();
+                });
+            };
+
+            onBtnRemoveClick = (productName) => {
+                const { productNames } = this.state;
+                const updatedProductNames = productNames.filter(pn => pn !== productName);
+                this.setState({ productNames : updatedProductNames });
+            };
+
             render(){
-                const productNames = ['Pen', 'Pencil', 'Marker'];
-                /* 
-                const productItems = [];
-                for(let idx=0; idx<productNames.length; idx++){
-                    const productName = productNames[idx],
-                        productItem = (<li key={idx}>{productName}</li>)
-                    productItems.push(productItem);
-                } 
-                */
+                const { productNames, newProductName } = this.state;
                 const productItems = productNames.map((productName, idx) => (
                     <li key={idx}>
                         <span>{productName}</span>
-                        <button> X </button>
+                        <button onClick={() => this.onBtnRemoveClick(productName)}> X </button>
                     </li>
                 ))
                 return(
@@ -31,11 +45,17 @@
                         <h1>Products</h1>
                         <hr />
                         <label>Product :</label>
-                        <input type="text"/>
-                        <button>Add</button>
-                        <ul>
-                            {productItems}
-                        </ul>
+                        <input 
+                            value={newProductName}
+                            type="text"
+                            ref={this.txtProductNameRef} 
+                            onChange={ evt => this.setState({ newProductName : evt.target.value }) }/>
+                        <button onClick={this.onBtnAddClick}>Add</button>
+                        { productNames.length <= 0 ? (<div>No products!</div>) : (
+                            <ul>
+                                {productItems}
+                            </ul>
+                        )}
                     </div>
                 )
             }
