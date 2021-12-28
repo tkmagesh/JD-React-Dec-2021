@@ -54,6 +54,8 @@
         }
 
         
+
+        
         class Calculator2 extends React.Component {
             state = {
                 n1 : 0,
@@ -102,10 +104,56 @@
                 )
             }
         }
+
+        class Calculator3 extends React.Component {
+                state = {
+                    n1: 0,
+                    n2: 0,
+                    result: 0
+                }
+
+                performCalculation = (operation) => {
+                    const { n1, n2 } = this.state;
+                    let result = 0;
+                    switch (operation) {
+                        case 'add':
+                            result = n1 + n2;
+                            break;
+                        case 'subtract':
+                            result = n1 - n2;
+                            break;
+                        case 'multiply':
+                            result = n1 * n2;
+                            break;
+                        case 'divide':
+                            result = n1 / n2;
+                            break;
+                    }
+                    this.setState({ result });
+                }
+                
+                render() {
+                    return (
+                        <div>
+                            <h1>Calculator-3</h1>
+                            <hr />
+                            <input type="number" onChange={evt => this.setState({ n1: parseInt(evt.target.value) })} />
+                            <input type="number" onChange={evt => this.setState({ n2: parseInt(evt.target.value) })} />
+                            <br />
+                            <button onClick={() => this.performCalculation('add')}>Add</button>
+                            <button onClick={() => this.performCalculation('subtract')}>Subtract</button>
+                            <button onClick={() => this.performCalculation('multiply')}>Multiply</button>
+                            <button onClick={() => this.performCalculation('divide')}>Divide</button>
+                            <div>{this.state.result}</div>
+                        </div>
+                    )
+                }
+            }
         ReactDOM.render(
             <div>
                 <Calculator1/>
                 <Calculator2/>
+                <Calculator3/>
             </div>
             , document.getElementById('root'))
 
