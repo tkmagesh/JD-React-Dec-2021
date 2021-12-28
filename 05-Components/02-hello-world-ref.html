@@ -18,33 +18,20 @@
             //state
             state = {
                 message : 'Default greet message (from state)',
-                userName : '',
             };
+
+            //ref
+            txtUserNameRef = React.createRef();
 
             //UI behavior
             onBtnGreetClick = (evt) => {
-                const greetMessage = `Hi ${this.state.userName}, Have a nice day!`
+                const userName = this.txtUserNameRef.current.value;
+                const greetMessage = `Hi ${userName}, Have a nice day!`
                 this.setState({
                     message : greetMessage,
                 }, () => {
                     console.log(this.state.message);
                 }); 
-               
-
-                /* 
-                this.setState({
-                    message: 'greet button clicked'
-                });
-                console.log(this.state.message); 
-                */
-                
-                
-            };
-
-            onTxtUserNameChange = (evt) => {
-                this.setState({
-                    userName : evt.target.value
-                });
             };
 
             //presentation
@@ -55,7 +42,7 @@
                         <h1>Greeter</h1>
                         <hr/>
                         <label htmlFor="">User Name :</label>
-                        <input type="text" onChange={this.onTxtUserNameChange} />
+                        <input type="text" ref={this.txtUserNameRef} />
                         <button onClick={this.onBtnGreetClick}>Greet</button>
                         <div className="highlight">{this.state.message}</div>
                     </div>
