@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculators</title>
+    <style>
+        .positive{
+            color : green;
+        }
+        .negative{
+            color : red;
+        }
+    </style>
     <script src="react.development.js"></script>
     <script src="react-dom.development.js"></script>
     <script src="babel.min.js"> </script>
@@ -36,6 +44,7 @@
                 this.setState({ result })
             }
             render(){
+                const { result } = this.state;
                 return(
                     <div>
                         <h1>Calculator-1</h1>
@@ -47,7 +56,7 @@
                         <button onClick={this.onSubtractClick}>Subtract</button>
                         <button onClick={this.onMultiplyClick}>Multiply</button>
                         <button onClick={this.onDivideClick}>Divide</button>
-                        <div>{this.state.result}</div>
+                        <div className={result >= 0 ? 'positive' : 'negative'}>{result}</div>
                     </div>
                 )
             }
