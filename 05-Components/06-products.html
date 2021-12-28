@@ -20,11 +20,19 @@
                     productItems.push(productItem);
                 } 
                 */
-                const productItems = productNames.map((productName, idx) => (<li key={idx}>{productName}</li>))
+                const productItems = productNames.map((productName, idx) => (
+                    <li key={idx}>
+                        <span>{productName}</span>
+                        <button> X </button>
+                    </li>
+                ))
                 return(
                     <div>
                         <h1>Products</h1>
                         <hr />
+                        <label>Product :</label>
+                        <input type="text"/>
+                        <button>Add</button>
                         <ul>
                             {productItems}
                         </ul>
