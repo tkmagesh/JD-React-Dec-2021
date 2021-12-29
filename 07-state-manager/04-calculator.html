@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinner [using hooks]</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script src="state-manager.js"></script>
+    <script type="text/babel">
+       
+        function calculatorReducer(currentState = 0, action){
+            const { n1, n2 } = action.payload || {} ;
+            switch (action.type){
+                case 'ADD':
+                    return n1 + n2;
+                    break;
+                case 'SUBTRACT':
+                    return n1 - n2;
+                    break;
+                case 'MULTIPLY':
+                    return n1 * n2;
+                    break;
+                case 'DIVIDE':
+                    return n1 / n2;
+                    break;
+                default:
+                    return currentState;
+            }
+        }
+
+        const store = StateManager.createStore(calculatorReducer);
+
+        const Calculator = ({store}) => {
+            const [n1, setN1] = React.useState(0);
+            const [n2, setN2] = React.useState(0);
+            const onAddClick = () => {
+                store.dispatch({ type : 'ADD', payload : {n1, n2}})
+            };
+            const onSubtractClick = () => {
+                store.dispatch({ type: 'SUBTRACT', payload: { n1, n2 } })
+            };
+            const onMultiplyClick = () => {
+                store.dispatch({ type: 'MULTIPLY', payload: { n1, n2 } })
+            }
+            const onDivideClick = () => {
+                store.dispatch({ type: 'DIVIDE', payload: { n1, n2 } })
+            }
+
+            const result = store.getState();
+            return (
+                <div>
+                    <h1>Calculator-1</h1>
+                    <hr />
+                    <input type="number" onChange={evt => setN1(parseInt(evt.target.value))} />
+                    <input type="number" onChange={evt => setN2(parseInt(evt.target.value)) } />
+                    <br />
+                    <button onClick={onAddClick}>Add</button>
+                    <button onClick={onSubtractClick}>Subtract</button>
+                    <button onClick={onMultiplyClick}>Multiply</button>
+                    <button onClick={onDivideClick}>Divide</button>
+                    <div className={result >= 0 ? 'positive' : 'negative'}>{result}</div>
+                </div>
+            )
+            
+        }
+
+        function renderCalculator(){
+            ReactDOM.render(
+                <Calculator store={store}/>, 
+                document.getElementById('root')
+            )
+        }
+        renderCalculator();
+        store.subscribe(renderCalculator);
+        
+    </script>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+</body>
+</html>
