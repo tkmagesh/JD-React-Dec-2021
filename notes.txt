@@ -160,3 +160,14 @@ React Hooks
 Assignment:
     Convert the Greeter, Products components to functional components
 
+State
+    UI State
+        Any data that supports the 'presentational' needs of the component
+        It is highly UNLIKELY that this data might be needed in other parts of the application
+        Feel free to maintain this data in the component state
+
+    App State
+        Any data that supports the 'core business' of the application
+        It is highly LIKELY that this data might be needed in other parts of the application
+        DO NOT maintain this data in the component state
+        

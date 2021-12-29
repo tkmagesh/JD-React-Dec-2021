@@ -16,20 +16,23 @@
     </style>
     <script type="text/babel">
        
-        const Products = () => {
+        const Products = ({onListChange}) => {
             const [newProductName, setNewProductName] = React.useState('');
             const [productNames, setProductNames] = React.useState([]);
             const txtNewProductNameRef = React.useRef(null);
 
             const onBtnAddClick = () => {
-                setProductNames([...productNames, newProductName]);
+                const updatedProductNames = [...productNames, newProductName];
+                setProductNames(updatedProductNames);
                 setNewProductName('')
                 txtNewProductNameRef.current.focus();
+                onListChange(updatedProductNames)
             };
 
             const onBtnRemoveClick = (productName) => {
                 const updatedProductNames = productNames.filter(pn => pn !== productName);
                 setProductNames(updatedProductNames);
+                onListChange(updatedProductNames)
             };
 
             const productItems = productNames.map((productName, idx) => (
@@ -41,7 +44,6 @@
             return (
                 <div>
                     <h1>Products</h1>
-                   
                     <hr />
                     <label>Product :</label>
                     <input
@@ -58,13 +60,24 @@
                 </div>
             )
         }
-        ReactDOM.render(
-            <div>
-                <Products/>
-                <div className="stats">
-                    <div>Products # : [value]</div>
+
+        const ProductsCount = ({data}) => (
+            <div className="stats">
+                <div>Products # : {data}</div>
+            </div>
+        )
+
+        const App = () => {
+            const [list, setList] = React.useState([]);
+            return(
+                 <div>
+                    <ProductsCount data={list.length} />
+                    <Products onListChange={(productNames) => setList(productNames)} />
                 </div>
-            </div>,
+            )
+        }
+        ReactDOM.render(
+           <App/>,
             document.getElementById('root')
         )
     </script>
