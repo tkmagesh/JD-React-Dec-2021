@@ -16,9 +16,9 @@
             }
         } 
         */
-        const HelloWorld = () => {
+        const HelloWorld = ({message}) => {
             const onBtnSaySomethingClick = () => {
-                console.log('Button is clicked');
+                console.log(message);
             };
             return (
                 <div>
@@ -27,7 +27,10 @@
                 </div>
             );
         }
-        ReactDOM.render(<HelloWorld />, document.getElementById('root'))
+        ReactDOM.render(
+            <HelloWorld message="Have a good day!"/>
+            , document.getElementById('root')
+        )
     </script>
 </head>
 <body>
