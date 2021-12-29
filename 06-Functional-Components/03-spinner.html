@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinner [using hooks]</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        class Spinner extends React.Component {
+            state = {
+                value : 0
+            };
+
+            onDecrementClick= () => {
+                this.setState({ value : this.state.value - 1});
+            };
+
+            onIncrementClick = () => {
+                this.setState({ value: this.state.value + 1 });
+            }
+            render(){
+                return(
+                    <div>
+                        <button onClick={this.onDecrementClick}>Decrement</button>
+                        <span> [ {this.state.value} ] </span>
+                        <button onClick={this.onIncrementClick}>Increment</button>
+                    </div>
+                )
+            }
+        }
+
+        const SpinnerFC = () => {
+            const [value, setValue] = React.useState(100)
+            
+            const onDecrementClick = () => {
+                setValue(value - 1);
+            };
+
+            const onIncrementClick = () => {
+                setValue(value + 1 );
+            }
+            return (
+                <div>
+                    <button onClick={onDecrementClick}>Decrement</button>
+                    <span> [ {value} ] </span>
+                    <button onClick={onIncrementClick}>Increment</button>
+                </div>
+            )
+        }
+
+        ReactDOM.render(<SpinnerFC/>, document.getElementById('root'))
+    </script>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+</body>
+</html>

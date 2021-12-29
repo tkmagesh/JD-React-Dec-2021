@@ -114,22 +114,24 @@
             </div>
         );
             
-
-        const SalaryCalculatorResult = ({ basic, hra, da, tax, salary }) => (
-            <div className="field">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td id="tdBasic">{basic}</td>
-                            <td id="tdHra">{hra}</td>
-                            <td id="tdDa">{da}</td>
-                            <td id="tdTax">{tax}</td>
-                            <td id="tdSalary">{salary}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        );
+       
+        const SalaryCalculatorResult = ({ basic, hra, da, tax, salary }) => {
+            return (
+                <div className="field">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td id="tdBasic">{basic}</td>
+                                <td id="tdHra">{hra}</td>
+                                <td id="tdDa">{da}</td>
+                                <td id="tdTax">{tax}</td>
+                                <td id="tdSalary">{salary}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
             
         
 
@@ -137,7 +139,6 @@
         function renderCalculator(){
             ReactDOM.render(
                 <div>
-                    <SalaryCalculator model={model}/>
                     <SalaryCalculator model={model}/>
                 </div>, 
                 document.getElementById('root')

@@ -144,3 +144,15 @@ Functional Components:
             No unnecessary lifecycle event executions
 Assignment:
     Convert the components in 08-salary-calculator-composition.html into functional components
+
+React Hooks
+    Functions used to manage side effects in functional components
+    Hook function names must start with the word 'use'
+    Builtin hooks
+        - useState
+        - useEffect
+        - useReducer
+        - useCallback
+        - useMemo
+        - useRef
+        - useContext
