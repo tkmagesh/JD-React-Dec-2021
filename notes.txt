@@ -142,4 +142,5 @@ Functional Components:
         Advantages
             No instances of the components are created
             No unnecessary lifecycle event executions
-
+Assignment:
+    Convert the components in 08-salary-calculator-composition.html into functional components
