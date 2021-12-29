@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functional Components</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        /* 
+        class HelloWorld extends React.Component {
+            render(){
+                return(<h1>Hello World</h1>);
+            }
+        } 
+        */
+        const HelloWorld = () => {
+            const onBtnSaySomethingClick = () => {
+                console.log('Button is clicked');
+            };
+            return (
+                <div>
+                    <h1>Hello World [FC]</h1>
+                    <button onClick={onBtnSaySomethingClick}>Say Something</button>
+                </div>
+            );
+        }
+        ReactDOM.render(<HelloWorld />, document.getElementById('root'))
+    </script>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+</body>
+</html>

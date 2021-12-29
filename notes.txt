@@ -137,5 +137,9 @@ Day-03
         React Hooks
     State Management
 
-
+Functional Components:
+    functions that can be used as components
+        Advantages
+            No instances of the components are created
+            No unnecessary lifecycle event executions
 
