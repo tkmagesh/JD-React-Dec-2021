@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <style>
+        .highlight{
+            color : red;
+        }
+    </style>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        const Greeter = ({greetTemplate}) => {
+            const [compState, setCompState] = React.useState({
+                userName : '',
+                message : ''
+            })
+            const onGreetClick = () => {
+                setCompState({...compState, message : `Hi ${compState.userName}, ${greetTemplate}`});
+            };
+            return (
+                <div>
+                    <h1>Greeter</h1>
+                    <hr />
+                    <label htmlFor="">User Name :</label>
+                    <input type="text" onChange={evt => setCompState({...compState, userName : evt.target.value})} />
+                    <button onClick={onGreetClick}>Greet</button>
+                    <div className="highlight">{compState.message}</div>
+                </div>
+            )
+        }
+                
+        ReactDOM.render(
+            <div>
+                <Greeter greetTemplate="Have a good day!"/>
+            </div>, 
+            document.getElementById('root')
+        );
+    </script>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+</body>
+</html>
+
+<!-- 
+    
+ -->

@@ -156,3 +156,7 @@ React Hooks
         - useMemo
         - useRef
         - useContext
+
+Assignment:
+    Convert the Greeter, Products components to functional components
+
