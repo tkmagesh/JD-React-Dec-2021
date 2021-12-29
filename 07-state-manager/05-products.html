@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script src="state-manager.js"></script>
+    <style>
+        .stats{
+            font-size: 18pt;
+        }
+
+    </style>
+    <script type="text/babel">
+
+        function productsReducer(currentState = [], action){
+            if (action.type === 'PRODUCT_ADD')
+                return [...currentState, action.payload];
+            if (action.type === 'PRODUCT_REMOVE')
+                return currentState.filter(pn => pn !== action.payload);
+            return currentState;
+        }
+
+        const store = StateManager.createStore(productsReducer);
+       
+        const Products = ({store}) => {
+            const [newProductName, setNewProductName] = React.useState('');
+            const productNames = store.getState();
+            const txtNewProductNameRef = React.useRef(null);
+
+            const onBtnAddClick = () => {
+                const action = { type: 'PRODUCT_ADD', payload: newProductName };
+                store.dispatch(action)
+            };
+
+            const onBtnRemoveClick = (productName) => {
+                const action = { type: 'PRODUCT_REMOVE', payload: productName };
+                store.dispatch(action);
+            };
+
+            const productItems = productNames.map((productName, idx) => (
+                <li key={idx}>
+                    <span>{productName}</span>
+                    <button onClick={() => onBtnRemoveClick(productName)}> X </button>
+                </li>
+            ))
+            return (
+                <div>
+                    <h1>Products</h1>
+                    <hr />
+                    <label>Product :</label>
+                    <input
+                        value={newProductName}
+                        type="text"
+                        ref={txtNewProductNameRef}
+                        onChange={evt => setNewProductName(evt.target.value)} />
+                    <button onClick={onBtnAddClick}>Add</button>
+                    {productNames.length <= 0 ? (<div>No products!</div>) : (
+                        <ul>
+                            {productItems}
+                        </ul>
+                    )}
+                </div>
+            )
+        }
+
+        const ProductsCount = ({store}) => (
+            <div className="stats">
+                <div>Products # : {store.getState().length}</div>
+            </div>
+        )
+
+        const App = () => {
+            return(
+                 <div>
+                    <ProductsCount store={store} />
+                    <Products store={store} />
+                </div>
+            )
+        }
+        function renderApp(){
+            ReactDOM.render(
+            <App/>,
+                document.getElementById('root')
+            )
+        }
+        renderApp();
+        store.subscribe(renderApp);
+
+    </script>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+</body>
+</html>
