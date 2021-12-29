@@ -8,6 +8,12 @@
     <script src="react.development.js"></script>
     <script src="react-dom.development.js"></script>
     <script src="babel.min.js"></script>
+    <style>
+        .stats{
+            font-size: 18pt;
+        }
+
+    </style>
     <script type="text/babel">
        
         const Products = () => {
@@ -35,6 +41,7 @@
             return (
                 <div>
                     <h1>Products</h1>
+                   
                     <hr />
                     <label>Product :</label>
                     <input
@@ -52,7 +59,12 @@
             )
         }
         ReactDOM.render(
-            <Products/>,
+            <div>
+                <Products/>
+                <div className="stats">
+                    <div>Products # : [value]</div>
+                </div>
+            </div>,
             document.getElementById('root')
         )
     </script>
