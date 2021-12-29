@@ -90,9 +90,6 @@ Day-02
         Component Composition
         Component Lifecycle
     
-    Functional Components
-        React Hooks
-
 Convert the following into a 'Greeter' component
     <h1>Greeter</h1>
     <hr>
@@ -134,4 +131,11 @@ Calculator-2
 
 Assignment:
     Build the salary calculator using React
+
+Day-03
+    Functional Components
+        React Hooks
+    State Management
+
+
 
