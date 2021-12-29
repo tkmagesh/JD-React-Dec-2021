@@ -32,6 +32,7 @@
             }
         }
 
+        /* 
         const SpinnerFC = () => {
             const [value, setValue] = React.useState(100)
             
@@ -47,6 +48,18 @@
                     <button onClick={onDecrementClick}>Decrement</button>
                     <span> [ {value} ] </span>
                     <button onClick={onIncrementClick}>Increment</button>
+                </div>
+            )
+        } 
+        */
+
+        const SpinnerFC = () => {
+            const [value, setValue] = React.useState(100)
+            return (
+                <div>
+                    <button onClick={() => setValue(value - 1)}>Decrement</button>
+                    <span> [ {value} ] </span>
+                    <button onClick={() => setValue(value + 1)}>Increment</button>
                 </div>
             )
         }
