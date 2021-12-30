@@ -51,12 +51,16 @@
         function bindActionCreators(actionCreators, dispatch) {
             var actionDispatchers = {};
             for(let key in actionCreators){
-                actionDispatchers[key] = function(...args){
-                    const action = actionCreators[key](...args);
-                    dispatch(action);
-                }
+                actionDispatchers[key] = bindActionCreatorFn(actionCreators[key], dispatch);
             }
             return actionDispatchers;
+        }
+
+        function bindActionCreatorFn(actionCreatorFn, dispatch) {
+            return function(...args){
+                const action = actionCreatorFn(...args);
+                dispatch(action);
+            }
         }
 
         const spinnerActionDispatchers = bindActionCreators(spinnerActionCreators, store.dispatch)
