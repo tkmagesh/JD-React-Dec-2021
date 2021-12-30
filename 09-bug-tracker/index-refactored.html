@@ -100,8 +100,11 @@
         const Bugs = ({bugs, addNew, toggle, remove, removeClosed}) => {
             const [newBugName, setNewBugName] = React.useState('');
 
+            {/* BugItem */ }
             const bugItems = bugs.map(bug => (
+                
                 <li key={bug.id}>
+
                     <span 
                         className={"bugname " + (bug.isClosed ? 'closed' : '')} 
                         onClick={() => toggle(bug)}
@@ -117,11 +120,14 @@
             return(
                 <>
                     <h3>Bugs</h3>
+                    {/* BugStats  */}
                     <section className="stats">
                         <span className="closed">{closedCount}</span>
                         <span> / </span>
                         <span>{bugs.length}</span>
                     </section>
+
+                    {/* BugSort */}
                     <section className="sort">
                         <label htmlFor="">Order By :</label>
                         <select name="" id="">
@@ -132,11 +138,15 @@
                         <label htmlFor="">Descending ? :</label>
                         <input type="checkbox" name="" id="" />
                     </section>
+
+                    {/* BugEdit */}
                     <section className="edit">
                         <label htmlFor="">Bug Name :</label>
                         <input type="text" onChange={ evt => setNewBugName(evt.target.value)} />
                         <button onClick={() => addNew(newBugName)}>Add New</button>
                     </section>
+
+                    {/* BugList */}
                     <section className="list">
                         <ol>
                             {bugItems}
