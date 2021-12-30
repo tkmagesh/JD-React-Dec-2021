@@ -171,3 +171,16 @@ State
         It is highly LIKELY that this data might be needed in other parts of the application
         DO NOT maintain this data in the component state
         
+
+Bug tracker
+    1. Create new bugs
+    2. List the created bugs
+    3. Toggle the 'closed' status of any bug
+    4. Remove any bug
+    5. Remove closed bugs
+    6. Display stats ( # of closed bugs / total # of bugs )
+    7. Sort the bugs (assignment)
+    8. Associate the bug with a project (multiple reducers)
+    9. Persist the bugs in the server (middlewares, promises, async await, axios)
+    10. Make the bugs accessible using unique endpoints (router)
+    11. Package and deployment 
