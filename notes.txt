@@ -173,14 +173,50 @@ State
         
 
 Bug tracker
-    1. Create new bugs
-    2. List the created bugs
-    3. Toggle the 'closed' status of any bug
-    4. Remove any bug
-    5. Remove closed bugs
-    6. Display stats ( # of closed bugs / total # of bugs )
+    (done) 1. Create new bugs
+    (done) 2. List the created bugs
+    (done) 3. Toggle the 'closed' status of any bug
+    (done) 4. Remove any bug
+    (done) 5. Remove closed bugs
+    (done) 6. Display stats ( # of closed bugs / total # of bugs )
     7. Sort the bugs (assignment)
     8. Associate the bug with a project (multiple reducers)
     9. Persist the bugs in the server (middlewares, promises, async await, axios)
     10. Make the bugs accessible using unique endpoints (router)
     11. Package and deployment 
+
+
+npx create-react-app bug-tracker-app
+
+yarn create  react-app  bug-tracker-app
+
+ES6 modules
+    1. Everything defined in a JS/JSX file is considered private to that file
+    2. Public entities have to be explicitly 'exported'
+    3. Public entities from other files have to be explicitly 'imported' in order to use them
+
+/src
+    /bugs
+        /actions
+            -addNew.js
+            -toggle.js
+            -remove.js
+            -removeClosed.js
+            *index.js
+        /reducers
+            -bugsReducer.js
+        /components
+            -bugStats.jsx
+            -bugSort.jsx
+            -bugEdit.jsx
+            -bugItem.jsx
+            -bugList.jsx
+        *index.js => Bugs component
+    /store
+        *index.js
+    
+
+To install redux
+    npm install redux
+        OR
+    yarn add redux
