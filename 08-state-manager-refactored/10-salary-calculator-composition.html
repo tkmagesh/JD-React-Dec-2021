@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Calculator</title>
+    <style>
+        body {
+            margin-left: 50px;
+        }
+    
+        .field {
+            margin-bottom: 10px;
+        }
+    
+        label {
+            display: block;
+        }
+    
+        td {
+            padding-right: 10px;
+            font-size: 18pt;
+        }
+    </style>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script src="redux.js"></script>
+    <script type="text/babel">
+        
+        function salaryCalculatorReducer(currentState = {basic : 0, hra : 0, da: 0, tax : 0, salary : 0}, action){
+            if (action.type === 'SET_VALUE'){
+                return {...currentState, [action.payload.attrName] : action.payload.attrValue}
+            }
+            if (action.type === 'CALCULATE_SALARY'){
+                const { basic, hra, da, tax } = currentState;
+                const gross = basic + hra + da,
+                    net = gross * ((100-tax)/100);
+                return { ...currentState, salary : net };
+            }
+            return currentState;
+        }
+
+        const salaryCalculatorActionCreators = {
+            setValue(attrName, value){
+                return { type : 'SET_VALUE', payload : { attrName : attrName, attrValue : value }}
+            },
+            calculate(){
+                return { type : 'CALCULATE_SALARY'}
+            }
+        };
+
+        const store = Redux.createStore(salaryCalculatorReducer);
+
+        const actionDispatchers = Redux.bindActionCreators(salaryCalculatorActionCreators, store.dispatch);
+
+
+        class SalaryCalculator extends React.Component {
+            render(){
+                const { data, setValue, calculate } = this.props,
+                    { basic, hra, da, tax, salary } = data;
+                return(
+                    <section>
+                        <SalaryCalculatorInput 
+                            labelText="Basic :" 
+                            value={basic}
+                            onValueChange={ val => setValue('basic', val)} 
+                        />
+                        <SalaryCalculatorInput 
+                            labelText="HRA :" 
+                            value={hra} 
+                            onValueChange={val => setValue('hra', val)} 
+                        />
+                        <SalaryCalculatorInput 
+                            labelText="DA :" 
+                            value={da} 
+                            onValueChange={val => setValue('da', val)} 
+                        />
+                        <SalaryCalculatorInput 
+                            labelText="Tax :" 
+                            value={tax} 
+                            onValueChange={val => setValue('tax', val)}
+                            type="range" min="0" max="30"  
+                        />
+                        <div className="field">
+                            <button onClick={() => calculate()}>Calculate</button>
+                        </div>
+                        {/* <SalaryCalculatorResult basic={basic} hra={hra} da={da} tax={tax} salary={salary} /> */}
+                        {/* <SalaryCalculatorResult {...data} /> */} {/* the data object attributes are passed as individual props */}
+                        <SalaryCalculatorResult {...{basic, hra, da, tax, salary}} />
+                    </section>
+                )
+            }
+        }
+
+        class SalaryCalculatorInput extends React.Component {
+            
+            render(){
+                const { labelText, value, onValueChange, type="number", ...restProps } = this.props;
+                return(
+                     <div className="field">
+                        <label htmlFor="">{labelText}</label>
+                        <input type={type}
+                            value={value}
+                            onChange={evt => onValueChange(parseInt(evt.target.value))}
+                            {...restProps} 
+                        />
+                    </div>
+                )
+            }
+        }
+
+        class SalaryCalculatorResult extends React.Component {
+            render(){
+                const { basic, hra, da, tax, salary} = this.props;
+                return(
+                    <div className="field">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td id="tdBasic">{basic}</td>
+                                    <td id="tdHra">{hra}</td>
+                                    <td id="tdDa">{da}</td>
+                                    <td id="tdTax">{tax}</td>
+                                    <td id="tdSalary">{salary}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                )
+            }
+        }
+
+        
+        function renderCalculator(){
+            const data = store.getState();
+            ReactDOM.render(
+                <div>
+                    <SalaryCalculator data={data} {...actionDispatchers}/>
+                </div>, 
+                document.getElementById('root')
+            )
+        }
+        renderCalculator()
+        store.subscribe(renderCalculator);
+
+    </script>
+</head>
+<body>
+    <h1>Salary Calculator</h1>
+    <div id="root">
+        
+    </div>
+</body>
+</html>
