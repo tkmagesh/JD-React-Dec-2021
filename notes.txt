@@ -229,3 +229,24 @@ npm install yarn -g
 
 cd bug-tracker-app
 yarn
+
+react-redux
+    adapter that connects the react with redux
+    npm install react-redux
+        OR
+    yarn add react-redux
+
+    Provider
+    useSelector
+    useDispatch
+
+Smart / Container components
+    interface with redux (for creating action dispatchers, for extracting store state)
+    pass the action dispatchers & state to the presentation components
+    It is advicable to have 'fewer' container components in the application
+
+Dumb / Presentation components
+    receive the action dispatchers & store state from the container Components
+    displays the give store state to user
+    invoke the action dispatcher when the user interacts
+    
