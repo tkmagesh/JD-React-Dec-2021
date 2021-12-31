@@ -12,7 +12,8 @@ import * as bugActionCreators from './actions';
 const bugsSelector = ({bugs, projects}) => {
     return {
         bugs : bugs.map(bug => ({...bug, projectName : projects.find(project => project.id === bug.projectId).name})),
-        projects 
+        projects,
+        closedCount : bugs.reduce((result, bug) => bug.isClosed ? result + 1 : result, 0)
     };
 };
 
@@ -35,12 +36,12 @@ const Bugs = () => {
         }
     }); */
 
-    const { bugs, projects } = useSelector(bugsSelector);
+    const { bugs, projects, closedCount } = useSelector(bugsSelector);
     return(
         <>
             <h3>Bugs</h3>
             {/* Presentation components */}
-            <BugStats bugs={bugs}/>
+            <BugStats count={bugs.length} closedCount={closedCount}/>
             <BugSort/>
             <BugEdit addNew={addNew} projects= {projects}/>
             <BugList {...{bugs, toggle, remove, removeClosed}}/>

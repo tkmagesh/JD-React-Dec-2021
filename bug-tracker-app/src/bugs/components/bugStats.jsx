@@ -1,10 +1,9 @@
-const BugStats = ({bugs}) => {
-    const closedCount = bugs.reduce((result, bug) => bug.isClosed ? result + 1 : result, 0);
+const BugStats = ({count, closedCount}) => {
     return(
         <section className="stats">
             <span className="closed">{closedCount}</span>
             <span> / </span>
-            <span>{bugs.length}</span>
+            <span>{count}</span>
         </section>
     )
 };
