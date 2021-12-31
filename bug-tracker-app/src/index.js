@@ -6,15 +6,27 @@ import reportWebVitals from './reportWebVitals';
 
 import { bindActionCreators } from 'redux';
 import * as bugActionCreators from './bugs/actions'
+import * as projectActionCreators from './projects/actions';
+
 import store from './store'
 import Bugs from './bugs';
+import Projects from './projects';
 
 const bugActionDispatchers = bindActionCreators(bugActionCreators, store.dispatch);
+const projectActionDispatchers = bindActionCreators(projectActionCreators, store.dispatch);
 
 function renderApp(){
-    const bugs = store.getState();
+  const storeState = store.getState();
+    const bugs = storeState.bugs;
+    const projects = storeState.projects;
+
     ReactDOM.render(
+      <>
+        <h1>Bug Tracker</h1>
+        <hr/>
+        <Projects projects={projects} {...projectActionDispatchers}/>
         <Bugs bugs={bugs} {...bugActionDispatchers}/>
+      </>
     , document.getElementById('root'))
 }
 renderApp();
