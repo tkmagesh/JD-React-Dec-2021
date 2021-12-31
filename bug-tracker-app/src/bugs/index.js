@@ -26,7 +26,7 @@ const Bugs = () => {
     const bugActionDispatchers = bindActionCreators(bugActionCreators, dispatch);
     const { addNew, toggle, remove, removeClosed } = bugActionDispatchers; 
     */
-    const { addNew, toggle, remove, removeClosed } = bindActionCreators(bugActionCreators, useDispatch());
+    const { addNew, toggle, remove, removeClosed, load } = bindActionCreators(bugActionCreators, useDispatch());
 
     //extracting state from the store
     /* const {bugs, projects} = useSelector((storeState) => {
@@ -40,6 +40,7 @@ const Bugs = () => {
     return(
         <>
             <h3>Bugs</h3>
+            <button onClick={load}>Load Bugs</button>
             {/* Presentation components */}
             <BugStats count={bugs.length} closedCount={closedCount}/>
             <BugSort/>

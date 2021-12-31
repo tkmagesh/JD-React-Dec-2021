@@ -8,7 +8,12 @@ import { Provider } from 'react-redux';
 import store from './store'
 import Bugs from './bugs';
 import Projects from './projects';
-  
+
+import axios from 'axios';
+
+//DO NOT DO THIS IN YOUR APPLICATION
+window['axios'] = axios;
+
 ReactDOM.render(
   <Provider store={store}>
     <h1>Bug Tracker</h1>
