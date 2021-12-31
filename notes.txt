@@ -250,3 +250,5 @@ Dumb / Presentation components
     displays the give store state to user
     invoke the action dispatcher when the user interacts
     
+Redux Middleware
+    
