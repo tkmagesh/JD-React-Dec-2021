@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import bugsReducer from '../bugs/reducers/bugsReducer';
 import projectsReducer from '../projects/reducers/projectsReducer';
 
@@ -10,6 +10,29 @@ const rootReducer = combineReducers({
 //const store = createStore(bugsReducer);
 //const store = createStore(projectsReducer);
 
-const store = createStore(rootReducer);
+/* function loggerMiddleware(store){
+    return function(next){
+        return function (action){ //invoked whenever an action is dispatched
+            console.group(action.type)
+            console.log('%c prev state', 'color: red', store.getState());
+            console.log('%c action', 'color: yellow', action);
+            const returnValue = next(action);
+            console.log('%c next state', 'color: green', store.getState());
+            return returnValue;
+        }
+    }
+}
+ */
+
+const loggerMiddleware = store => next => action => {
+    console.group(action.type)
+    console.log('%c prev state', 'color: red', store.getState());
+    console.log('%c action', 'color: yellow', action);
+    const returnValue = next(action);
+    console.log('%c next state', 'color: green', store.getState());
+    return returnValue;
+}
+
+const store = createStore(rootReducer, applyMiddleware(loggerMiddleware));
 
 export default store;
