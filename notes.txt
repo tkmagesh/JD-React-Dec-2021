@@ -257,3 +257,10 @@ To DO:
     populate the projects in the 'Project dropdown' in 'BugEdit' component
     Associate the selected project id to the bug ()
     Display the corresponding name 'Project Name' in 'BugItem' component
+
+To install axios
+    npm install axios
+        or
+    yarn add axios
+
+    

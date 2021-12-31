@@ -1,3 +1,4 @@
+/* 
 import axios from 'axios';
 
 function getInMemoryBugs(){
@@ -23,13 +24,37 @@ async function getAsyncServerBugs(){
     console.log('getAsyncServerBugs triggered')
     var response = await axios.get('http://localhost:3030/bugs');
     const bugs = response.data
-    console.table(bugs);
+    return bugs;
 }
+ */
+/* export function load(){
+    return function(dispatch){
+        getAsyncServerBugs()
+            .then(bugs => {
+                const action =  { type : 'BUGS_INIT', payload : bugs };
+                dispatch(action);
+            });
+    }
+}
+ */
+
+/* 
+export function load(){
+    return async function(dispatch){
+        const bugs = await getAsyncServerBugs()
+        const action = { type : 'BUGS_INIT', payload : bugs };
+        dispatch(action);
+    };
+} 
+*/
+
+import bugApi from '../services/bugApi';
 
 export function load(){
-    getAsyncServerBugs();
-    const bugs = getInMemoryBugs()
-    const action =  { type : 'BUGS_INIT', payload : bugs };
-    return action;
+    return async function(dispatch){
+        const bugs = await bugApi.getAll();
+        const action = { type : 'BUGS_INIT', payload : bugs };
+        dispatch(action);
+    }
 }
 
