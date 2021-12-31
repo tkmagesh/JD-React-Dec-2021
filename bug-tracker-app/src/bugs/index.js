@@ -8,6 +8,7 @@ import BugList from './components/bugList';
 import './index.css';
 
 import * as bugActionCreators from './actions';
+import { useEffect } from 'react';
 
 const bugsSelector = ({bugs, projects}) => {
     return {
@@ -36,6 +37,10 @@ const Bugs = () => {
         }
     }); */
 
+    /* useEffect(() => {
+        load();
+    }, []); */
+    
     const { bugs, projects, closedCount } = useSelector(bugsSelector);
     return(
         <>

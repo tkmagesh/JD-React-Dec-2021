@@ -4,29 +4,29 @@
       "id": 1,
       "name": "Bug - 1",
       "isClosed": false,
-      "createdAt": "2021-11-11T08:30:06.777Z",
-      "projectId" : 1
+      "createdAt": "2021-12-31T11:59:25.187Z",
+      "projectId": 1
     },
     {
       "id": 2,
       "name": "Bug - 2",
       "isClosed": false,
-      "createdAt": "2021-11-11T08:30:10.313Z",
-      "projectId" : 1
+      "createdAt": "2021-12-31T11:59:29.855Z",
+      "projectId": 2
     },
     {
       "id": 3,
       "name": "Bug - 3",
       "isClosed": false,
-      "createdAt": "2021-11-11T08:30:14.754Z",
-      "projectId" : 1
+      "createdAt": "2021-12-31T11:59:33.499Z",
+      "projectId": 3
     },
     {
       "id": 4,
-      "name": "Bug - 4",
+      "name": "Bug-4",
       "isClosed": false,
-      "createdAt": "2021-11-11T08:40:56.598Z",
-      "projectId" : 1
+      "createdAt": "2021-12-31T12:05:51.319Z",
+      "projectId": 2
     }
   ],
   "projects": [

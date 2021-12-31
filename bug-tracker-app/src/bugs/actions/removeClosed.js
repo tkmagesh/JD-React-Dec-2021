@@ -1,5 +1,10 @@
-export function  removeClosed(currentBugs /* TO BE FIXED */){
-    const bugsToRetain = currentBugs.filter(bug => !bug.isClosed);
-    const action = { type : 'BUGS_INIT', payload : bugsToRetain};
-    return action;
+import { remove } from './remove';
+
+export function  removeClosed(){
+    return async function(dispatch, getState){
+        const bugs = getState().bugs;
+        const bugsToRemove = bugs.filter(bug => bug.isClosed);
+        bugsToRemove.map(bug => remove(bug)(dispatch));
+    }
 }
+

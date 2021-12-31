@@ -1,11 +1,12 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import bugsReducer from '../bugs/reducers/bugsReducer';
-import projectsReducer from '../projects/reducers/projectsReducer';
+import { createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger'
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const rootReducer = combineReducers({
-    bugs : bugsReducer,
-    projects : projectsReducer
-});
+import rootReducer from '../reducers';
+
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logger, thunk)));
+export default store;
 
 //const store = createStore(bugsReducer);
 //const store = createStore(projectsReducer);
@@ -23,7 +24,7 @@ const rootReducer = combineReducers({
     }
 }
  */
-
+/* 
 const loggerMiddleware = store => next => action => {
     console.group(action.type)
     console.log('%c prev state', 'color: red', store.getState());
@@ -37,7 +38,7 @@ function asyncMiddleware(store){
     return function(next){
         return function(action){
             if (typeof action === 'function'){
-                return action(store.dispatch);
+                return action(store.dispatch, store.getState);
             }
             return next(action);
         }
@@ -45,5 +46,5 @@ function asyncMiddleware(store){
 }
 
 const store = createStore(rootReducer, applyMiddleware(loggerMiddleware, asyncMiddleware));
+ */
 
-export default store;
