@@ -9,6 +9,13 @@ import './index.css';
 
 import * as bugActionCreators from './actions';
 
+const bugsSelector = ({bugs, projects}) => {
+    return {
+        bugs : bugs.map(bug => ({...bug, projectName : projects.find(project => project.id === bug.projectId).name})),
+        projects 
+    };
+};
+
 /* Smart / Container Component */
 const Bugs = () => {
 
@@ -21,17 +28,21 @@ const Bugs = () => {
     const { addNew, toggle, remove, removeClosed } = bindActionCreators(bugActionCreators, useDispatch());
 
     //extracting state from the store
-    const bugs = useSelector((storeState) => {
-        return storeState.bugs;
-    });
+    /* const {bugs, projects} = useSelector((storeState) => {
+        return {
+            bugs : storeState.bugs,
+            projects : storeState.projects
+        }
+    }); */
 
+    const { bugs, projects } = useSelector(bugsSelector);
     return(
         <>
             <h3>Bugs</h3>
             {/* Presentation components */}
             <BugStats bugs={bugs}/>
             <BugSort/>
-            <BugEdit addNew={addNew} />
+            <BugEdit addNew={addNew} projects= {projects}/>
             <BugList {...{bugs, toggle, remove, removeClosed}}/>
         </>
     )
